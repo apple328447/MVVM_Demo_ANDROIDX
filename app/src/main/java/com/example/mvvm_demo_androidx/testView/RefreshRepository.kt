@@ -1,4 +1,4 @@
-package com.example.mvvm_demo_androidx.RefreshView
+package com.example.mvvm_demo_androidx.testView
 
 import android.os.Handler
 
@@ -19,8 +19,7 @@ class RefreshRepository {
         fun onDataReady(data: String?, loading: Boolean?)
     }
 
-
-    fun updateText(): String? {
+    private fun updateText(): String? {
         val randomNumber = (Math.random() * 10).toInt()
         return Integer.toString(randomNumber)
     }
