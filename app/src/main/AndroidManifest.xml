@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DataBinding_LiveData.Refresh_DataBind_LiveData_Activity">
+        <activity android:name=".ObservableField_LiveData.Refresh_DataBind_LiveData_Activity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -16,7 +16,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DataBinding_LiveData.Refresh_DataBind_LiveData_Activity">
+        tools:context=".ObservableField_LiveData.Refresh_DataBind_LiveData_Activity">
 
         <Button
             android:id="@+id/btnRefresh"

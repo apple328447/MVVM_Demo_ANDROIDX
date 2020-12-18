@@ -1,4 +1,4 @@
-package com.example.mvvm_demo_androidx.DataBinding_LiveData
+package com.example.mvvm_demo_androidx.ObservableField_LiveData
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -51,11 +51,10 @@ class Refresh_DataBind_LiveData_Activity : AppCompatActivity() {
     }
 
     private fun initLiveData(){
-//        // observe是發現ViewModel裡面的資料有更動時要做的事情
+      // observe是發現ViewModel裡面的資料有更動時要做的事情
         refreshViewModel.refreshViewFormState.observe(this, Observer{
             val viewState = it ?: return@Observer
             Log.v("Bill","LiveData===>observe:   ${Gson().toJson(viewState)}")
-
         })
     }
 }
