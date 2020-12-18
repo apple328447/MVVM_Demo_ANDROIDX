@@ -1,10 +1,13 @@
 package com.example.mvvm_demo_androidx.testView
 
-import android.app.Application
+import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.mvvm_demo_androidx.ui.RefreshViewFromState
+import com.google.gson.Gson
 
 /**
  * ViewModel：接收View的指令並對Model請求資料，將取得的資料保存起來供View使用。
@@ -15,20 +18,46 @@ import androidx.lifecycle.ViewModelProvider
  * */
 
 
-class RefreshViewModel(private val refreshRepository: RefreshRepository)  : ViewModel() {
+class RefreshViewModel(private val refreshRepository: RefreshRepository) : ViewModel() {
     //這是存資料
     //用Data Binding中的Observable來讓View和ViewModel溝通。
-    val mData: ObservableField<String> = ObservableField()
+    val mDataNumber: ObservableField<String> = ObservableField()
     val isLoading: ObservableBoolean = ObservableBoolean(false)
     val description: ObservableField<String> = ObservableField("隨機產生一組數字")
 
+    //DataBinding+LiveData 把上面的資料都彙整成一個RefreshViewFromState
+    val refreshViewFormState = MutableLiveData<RefreshViewFromState>()
+
+    var mRefreshViewFromState = RefreshViewFromState(
+        mDataNumber = refreshViewFormState.value?.mDataNumber,
+        isLoading = true,
+        description = refreshViewFormState.value?.description
+    )
+
+    //這是DataBinding修改UI的方式
     fun refresh() {
         isLoading.set(true)
-        mData.set("")
+        mDataNumber.set("")
         refreshRepository.retrieveData(object : RefreshRepository.onDataReadyCallback {
             override fun onDataReady(data: String?, loading: Boolean?) {
-                mData.set(data)
+                mDataNumber.set(data)
                 isLoading.set(loading ?: false)
+            }
+        })
+    }
+
+    //這個是使用LiveData更新FormState再更新UI (感覺好像繞了一圈?)
+    fun refreshFormStateClass() {
+        Log.v("Bill", "ViewModel===>refreshFormStateClass")
+        //
+        mRefreshViewFromState.isLoading = true
+        refreshViewFormState.value = mRefreshViewFromState
+        refreshRepository.retrieveData(object : RefreshRepository.onDataReadyCallback {
+            override fun onDataReady(data: String?, loading: Boolean?) {
+                mRefreshViewFromState.isLoading = false
+                mRefreshViewFromState.description = "哈哈哈哈哈哈+${data}"
+                mRefreshViewFromState.mDataNumber = "$data"
+                refreshViewFormState.value = mRefreshViewFromState
             }
         })
     }
