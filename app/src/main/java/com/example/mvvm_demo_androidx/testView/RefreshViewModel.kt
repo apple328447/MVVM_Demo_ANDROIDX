@@ -28,6 +28,7 @@ class RefreshViewModel(private val refreshRepository: RefreshRepository) : ViewM
     //DataBinding+LiveData 把上面的資料都彙整成一個RefreshViewFromState
     val refreshViewFormState = MutableLiveData<RefreshViewFromState>()
 
+    //這種寫法可以決定要更新哪幾個參數
     var mRefreshViewFromState = RefreshViewFromState(
         mDataNumber = refreshViewFormState.value?.mDataNumber,
         isLoading = true,
@@ -40,6 +41,7 @@ class RefreshViewModel(private val refreshRepository: RefreshRepository) : ViewM
         mDataNumber.set("")
         refreshRepository.retrieveData(object : RefreshRepository.onDataReadyCallback {
             override fun onDataReady(data: String?, loading: Boolean?) {
+                description.set("這是使用ObservableField的DataBinding")
                 mDataNumber.set(data)
                 isLoading.set(loading ?: false)
             }
@@ -55,7 +57,7 @@ class RefreshViewModel(private val refreshRepository: RefreshRepository) : ViewM
         refreshRepository.retrieveData(object : RefreshRepository.onDataReadyCallback {
             override fun onDataReady(data: String?, loading: Boolean?) {
                 mRefreshViewFromState.isLoading = false
-                mRefreshViewFromState.description = "哈哈哈哈哈哈+${data}"
+                mRefreshViewFromState.description = "這是使用ObservableField+LivaData的DataBinding"
                 mRefreshViewFromState.mDataNumber = "$data"
                 refreshViewFormState.value = mRefreshViewFromState
             }
