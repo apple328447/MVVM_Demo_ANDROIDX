@@ -35,7 +35,7 @@ class RefreshViewModel(private val refreshRepository: RefreshRepository) : ViewM
         description = refreshViewFormState.value?.description
     )
 
-    //這是DataBinding修改UI的方式
+    //這是ObservableField修改UI的方式
     fun refresh() {
         isLoading.set(true)
         mDataNumber.set("")
@@ -48,7 +48,7 @@ class RefreshViewModel(private val refreshRepository: RefreshRepository) : ViewM
         })
     }
 
-    //這個是使用LiveData更新FormState再更新UI (感覺好像繞了一圈?)
+    //這個是使用LiveData更新FormState再更新UI (如果ObservableField和LiveData兩個一起用感覺好像繞了一圈?)
     fun refreshFormStateClass() {
         Log.v("Bill", "ViewModel===>refreshFormStateClass")
         //
@@ -57,13 +57,14 @@ class RefreshViewModel(private val refreshRepository: RefreshRepository) : ViewM
         refreshRepository.retrieveData(object : RefreshRepository.onDataReadyCallback {
             override fun onDataReady(data: String?, loading: Boolean?) {
                 mRefreshViewFromState.isLoading = false
-                mRefreshViewFromState.description = "這是使用ObservableField+LivaData的DataBinding"
+                mRefreshViewFromState.description = "這個是使用LiveData更新FormState再更新UI"
                 mRefreshViewFromState.mDataNumber = "$data"
                 refreshViewFormState.value = mRefreshViewFromState
             }
         })
     }
 
+    //用來實體化ViewModel，但之後可以直接使用Koin套件解決
     class Factory(var refreshRepository: RefreshRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(RefreshViewModel::class.java)) {

@@ -37,19 +37,9 @@ class RefreshViewActivity : AppCompatActivity() {
                 refreshViewModel = this@RefreshViewActivity.refreshViewModel
                 lifecycleOwner = this@RefreshViewActivity
             }
-            //7.LiveData
-            initLiveData()
 
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
-
-    private fun initLiveData(){
-        // observe是發現ViewModel裡面的資料有更動時要做的事情
-        refreshViewModel.refreshViewFormState.observe(this, Observer{
-            val viewState = it ?: return@Observer
-            Log.v("LiveData===>observe","${Gson().toJson(viewState)}")
-        })
     }
 }
