@@ -2,19 +2,16 @@ package com.example.mvvm_demo_androidx.ObservableField_LiveData
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm_demo_androidx.R
 import com.example.mvvm_demo_androidx.databinding.ActivityRefreshDataBindLiveDataBinding
-import com.example.mvvm_demo_androidx.testView.RefreshRepository
-import com.example.mvvm_demo_androidx.testView.RefreshViewModel
-import com.google.gson.Gson
+import com.example.mvvm_demo_androidx.Repository.RefreshRepository
+import com.example.mvvm_demo_androidx.ViewModel.RefreshViewModel
 import java.lang.Exception
-//import kotlinx.android.synthetic.main.fragment_bet_record_search.*
 
-class Refresh_DataBind_LiveData_Activity : AppCompatActivity() {
+class ObservableField_LiveData_Activity : AppCompatActivity() {
 
     //1.建立ViewModel 名稱要跟Xml的 <data>裡面的name一樣
     private lateinit var refreshViewModel: RefreshViewModel
@@ -39,8 +36,8 @@ class Refresh_DataBind_LiveData_Activity : AppCompatActivity() {
             refreshViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_refresh__data_bind__live_data_)
             //6.在onCreat設定DataBinding綁定的ViewModle和生命週期
             refreshViewBinding.apply {
-                refreshViewModel = this@Refresh_DataBind_LiveData_Activity.refreshViewModel
-                lifecycleOwner = this@Refresh_DataBind_LiveData_Activity
+                refreshViewModel = this@ObservableField_LiveData_Activity.refreshViewModel
+                lifecycleOwner = this@ObservableField_LiveData_Activity
             }
             //7.LiveData
             initLiveData()
@@ -54,7 +51,7 @@ class Refresh_DataBind_LiveData_Activity : AppCompatActivity() {
       // observe是發現ViewModel裡面的資料有更動時要做的事情
         refreshViewModel.refreshViewFormState.observe(this, Observer{
             val viewState = it ?: return@Observer
-            Log.v("Bill","LiveData===>observe:   ${Gson().toJson(viewState)}")
+            //*******警告********如果ObservableField和LiveData同時使用，這裡又再更改ViewModel的資料，會產生無窮迴圈***********************
         })
     }
 }

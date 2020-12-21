@@ -1,4 +1,4 @@
-package com.example.mvvm_demo_androidx.testView
+package com.example.mvvm_demo_androidx.ViewModel
 
 import android.util.Log
 import androidx.databinding.ObservableBoolean
@@ -6,8 +6,8 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.mvvm_demo_androidx.Repository.RefreshRepository
 import com.example.mvvm_demo_androidx.ui.RefreshViewFromState
-import com.google.gson.Gson
 
 /**
  * ViewModel：接收View的指令並對Model請求資料，將取得的資料保存起來供View使用。

@@ -1,17 +1,16 @@
-package com.example.mvvm_demo_androidx.testView
+package com.example.mvvm_demo_androidx.ObservableField
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm_demo_androidx.R
 import com.example.mvvm_demo_androidx.databinding.ActivityRefreshViewBinding
-import com.google.gson.Gson
+import com.example.mvvm_demo_androidx.Repository.RefreshRepository
+import com.example.mvvm_demo_androidx.ViewModel.RefreshViewModel
 import java.lang.Exception
 
-class RefreshViewActivity : AppCompatActivity() {
+class ObservableFieldActivity : AppCompatActivity() {
 
     //1.建立ViewModel 名稱要跟Xml的 <data>裡面的name一樣
     private lateinit var refreshViewModel: RefreshViewModel
@@ -34,8 +33,8 @@ class RefreshViewActivity : AppCompatActivity() {
             refreshViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_refresh_view)
             //6.在onCreat設定DataBinding綁定的ViewModle和生命週期
             refreshViewBinding.apply {
-                refreshViewModel = this@RefreshViewActivity.refreshViewModel
-                lifecycleOwner = this@RefreshViewActivity
+                refreshViewModel = this@ObservableFieldActivity.refreshViewModel
+                lifecycleOwner = this@ObservableFieldActivity
             }
 
         } catch (e: Exception) {

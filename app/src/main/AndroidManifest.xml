@@ -10,14 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LiveData.LiveDataActivity">
+
+        </activity>
+        <activity android:name=".ObservableField_LiveData.ObservableField_LiveData_Activity"></activity>
+        <activity android:name=".ObservableField.ObservableFieldActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".ObservableField_LiveData.Refresh_DataBind_LiveData_Activity"></activity>
-        <activity android:name=".testView.RefreshViewActivity"></activity>
         <activity android:name=".MainActivity" />
     </application>
 
