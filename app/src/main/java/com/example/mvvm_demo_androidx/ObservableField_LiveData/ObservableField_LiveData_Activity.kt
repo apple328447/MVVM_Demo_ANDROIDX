@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm_demo_androidx.R
 import com.example.mvvm_demo_androidx.databinding.ActivityRefreshDataBindLiveDataBinding
 import com.example.mvvm_demo_androidx.Repository.RefreshRepository
-import com.example.mvvm_demo_androidx.ViewModel.RefreshViewModel
+import com.example.mvvm_demo_androidx.refreshViewModel.RefreshViewModel
 import java.lang.Exception
 
 class ObservableField_LiveData_Activity : AppCompatActivity() {

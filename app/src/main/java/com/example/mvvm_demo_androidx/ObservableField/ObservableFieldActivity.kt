@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm_demo_androidx.R
 import com.example.mvvm_demo_androidx.databinding.ActivityRefreshViewBinding
 import com.example.mvvm_demo_androidx.Repository.RefreshRepository
-import com.example.mvvm_demo_androidx.ViewModel.RefreshViewModel
+import com.example.mvvm_demo_androidx.refreshViewModel.RefreshViewModel
 import java.lang.Exception
 
 class ObservableFieldActivity : AppCompatActivity() {
@@ -36,7 +36,6 @@ class ObservableFieldActivity : AppCompatActivity() {
                 refreshViewModel = this@ObservableFieldActivity.refreshViewModel
                 lifecycleOwner = this@ObservableFieldActivity
             }
-
         } catch (e: Exception) {
             e.printStackTrace()
         }

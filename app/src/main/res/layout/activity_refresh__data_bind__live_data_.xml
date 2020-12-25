@@ -7,7 +7,7 @@
 
         <variable
             name="refreshViewModel"
-            type="com.example.mvvm_demo_androidx.ViewModel.RefreshViewModel" />
+            type="com.example.mvvm_demo_androidx.refreshViewModel.RefreshViewModel" />
     </data>
 
 

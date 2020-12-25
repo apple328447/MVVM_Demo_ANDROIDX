@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm_demo_androidx.R
 import com.example.mvvm_demo_androidx.Repository.RefreshRepository
-import com.example.mvvm_demo_androidx.ViewModel.RefreshViewModel
+import com.example.mvvm_demo_androidx.refreshViewModel.RefreshViewModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_live_data.*
 import java.lang.Exception

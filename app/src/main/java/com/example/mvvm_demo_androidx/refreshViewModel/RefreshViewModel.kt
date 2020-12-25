@@ -1,4 +1,4 @@
-package com.example.mvvm_demo_androidx.ViewModel
+package com.example.mvvm_demo_androidx.refreshViewModel
 
 import android.util.Log
 import androidx.databinding.ObservableBoolean
