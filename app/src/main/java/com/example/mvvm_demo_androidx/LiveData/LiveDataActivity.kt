@@ -71,5 +71,4 @@ class LiveDataActivity : AppCompatActivity() {
             refreshViewModel.refreshFormStateClass()
         }
     }
-
 }

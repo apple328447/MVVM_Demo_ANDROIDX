@@ -34,4 +34,12 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <!-- Basic styling for the buttons. -->
+    <style name="SleepButtons" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">#f0f0f0</item>
+        <item name="colorAccent">#388310</item>
+        <item name="colorControlHighlight">#388310</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
