@@ -44,7 +44,7 @@ class MoodListActivity : AppCompatActivity() {
 
     private fun initLiveData() {
         // observe是發現ViewModel裡面的資料有更動時要做的事情
-        moodListViewModel.data.observe(this, Observer {
+        moodListViewModel.mRvData.observe(this, Observer {
             val moodListData = it ?: return@Observer //這裡返回的是
             Log.v("Bill", "LiveData===>observe:   ${Gson().toJson(moodListData)}")
             adapter.data = moodListData
