@@ -49,11 +49,6 @@ class MoodListActivity : AppCompatActivity() {
             Log.v("Bill", "LiveData===>observe:   ${Gson().toJson(moodListData)}")
             adapter.data = moodListData
         })
-//        moodListViewModel.recyclerViewData.observe(viewLifecycleOwner, Observer {
-//            val moodListData = it ?: return@Observer //這裡返回的是
-//            Log.v("Bill", "LiveData===>observe:   ${Gson().toJson(moodListData)}")
-//            adapter.data = moodListData
-//        })
     }
 
     private fun initButton() {

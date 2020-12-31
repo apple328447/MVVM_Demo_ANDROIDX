@@ -56,6 +56,5 @@ class MoodListAdapter : RecyclerView.Adapter<MoodListAdapter.ViewHolder>() {
                 return ViewHolder(view)
             }
         }
-
     }
 }
