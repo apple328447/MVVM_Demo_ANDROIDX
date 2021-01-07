@@ -7,6 +7,10 @@
         <variable
             name="refreshViewModel"
             type="com.example.mvvm_demo_androidx.refreshViewModel.RefreshViewModel" />
+
+        <variable
+            name="listData"
+            type="com.example.mvvm_demo_androidx.database.ListData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

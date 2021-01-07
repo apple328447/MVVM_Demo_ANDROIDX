@@ -35,9 +35,17 @@ class ObservableFieldActivity : AppCompatActivity() {
             refreshViewBinding.apply {
                 refreshViewModel = this@ObservableFieldActivity.refreshViewModel
                 lifecycleOwner = this@ObservableFieldActivity
+
+                //7.這裡可以放Xml要用到的資料
+                listData = null
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
+
+    //TODO Bill 如果是綁在Fragment應該就是用下面的方式
+    //在onCreateView
+    //val binding:xxxxBinding = DataBindingUtil.inflate(inflater, R.layout.dialog_info_center_detail_list,container,false)
+    //然後把return super.onCreateView(inflater, container, savedInstanceState)去掉換成return binding.root放在最下面一行
 }
