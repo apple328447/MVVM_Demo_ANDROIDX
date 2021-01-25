@@ -16,7 +16,7 @@ class ObservableFieldActivity : AppCompatActivity() {
     private lateinit var refreshViewModel: RefreshViewModel
 
     //2.建立DataBinding
-    private lateinit var refreshViewBinding: ActivityRefreshViewBinding
+    private lateinit var refreshViewBinding: ActivityRefreshViewBinding //建立Activity的時候，Java(generated)都會產生一個
 
     //3.建立Repository
     private val refreshRepository = RefreshRepository()
@@ -33,7 +33,7 @@ class ObservableFieldActivity : AppCompatActivity() {
             refreshViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_refresh_view)
             //6.在onCreat設定DataBinding綁定的ViewModle和生命週期
             refreshViewBinding.apply {
-                refreshViewModel = this@ObservableFieldActivity.refreshViewModel
+                refreshViewModel = this@ObservableFieldActivity.refreshViewModel // Xml裡面的參數 =(設定) 當前activity的值，所以Xml改名字這裡也要改
                 lifecycleOwner = this@ObservableFieldActivity
 
                 //7.這裡可以放Xml要用到的資料

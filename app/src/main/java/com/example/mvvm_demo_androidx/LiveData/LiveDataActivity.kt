@@ -43,7 +43,7 @@ class LiveDataActivity : AppCompatActivity() {
 
     private fun initLiveData() {
         // observe是發現ViewModel裡面的資料有更動時要做的事情
-        refreshViewModel.refreshViewFormState.observe(this, Observer {
+        refreshViewModel.refreshViewFormState.observe(this, Observer {//TODO 如果是fragment就要用this.viewLifecycleOwner,Observer {
             val viewState = it ?: return@Observer //這裡返回的是
             Log.v("Bill", "LiveData===>observe:   ${Gson().toJson(viewState)}")
 
