@@ -11,11 +11,19 @@
         android:theme="@style/AppTheme">
         <activity android:name=".base.BaseToolBarActivity"></activity>
         <activity android:name=".RecyclerViewDemo.MoodListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".LiveData.LiveDataActivity" />
-        <activity android:name=".ObservableField_LiveData.ObservableField_LiveData_Activity" />
-        <activity android:name=".ObservableField.ObservableFieldActivity"></activity>
+        <activity android:name=".ObservableField_LiveData.ObservableField_LiveData_Activity" >
+
+        </activity>
+        <activity android:name=".ObservableField.ObservableFieldActivity">
+
+        </activity>
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

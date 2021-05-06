@@ -15,8 +15,9 @@ class MoodListViewModel(private val repository: MoodListRepository) : ViewModel(
         viewModelScope.launch {
             var newData = repository.addOneMood()
             var oldData = _mRvData.value ?: mutableListOf()
-            oldData?.add(newData)
-            _mRvData.value = oldData
+            oldData.add(newData)
+            _mRvData.value = oldData// _mRvData.postValue(oldData)  這兩個寫法都可以
+
         }
     }
 

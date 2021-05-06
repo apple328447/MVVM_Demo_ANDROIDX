@@ -3,6 +3,7 @@ package com.example.mvvm_demo_androidx.RecyclerViewDemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +22,9 @@ class MoodListActivity : AppCompatActivity() {
     private val moodListRepository = MoodListRepository()
 
     //RecyclerView 的 Adapter
-    var adapter = MoodListAdapter()
+    var adapter = MoodListAdapter(MoodListAdapter.ItemClickListener{
+        Toast.makeText(this@MoodListActivity,"點選時間是：${it}",Toast.LENGTH_SHORT).show()
+    })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

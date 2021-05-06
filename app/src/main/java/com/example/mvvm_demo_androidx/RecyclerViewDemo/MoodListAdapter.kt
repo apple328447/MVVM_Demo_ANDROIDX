@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm_demo_androidx.R
 import com.example.mvvm_demo_androidx.database.ListData
 
-class MoodListAdapter : RecyclerView.Adapter<MoodListAdapter.ViewHolder>() {
+class MoodListAdapter(private val clickListener: ItemClickListener) : RecyclerView.Adapter<MoodListAdapter.ViewHolder>() {
 
     var data = mutableListOf<ListData>()
         set(value) {
@@ -23,7 +23,7 @@ class MoodListAdapter : RecyclerView.Adapter<MoodListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        holder.bind(item)
+        holder.bind(item,clickListener)
     }
 
     override fun getItemCount() = data?.size
@@ -33,7 +33,7 @@ class MoodListAdapter : RecyclerView.Adapter<MoodListAdapter.ViewHolder>() {
         val img_mood: ImageView = itemView.findViewById(R.id.quality_image)
         val txv_title: TextView = itemView.findViewById(R.id.txv_description)
 
-        fun bind(item: ListData) {
+        fun bind(item: ListData,clickListener:ItemClickListener) {
             img_mood.setImageResource(
                 when (item.moodIndex) {
                     0 -> R.drawable.ic_sleep_0
@@ -46,6 +46,9 @@ class MoodListAdapter : RecyclerView.Adapter<MoodListAdapter.ViewHolder>() {
                 }
             )
             txv_title.text = item.time.toString()
+            txv_title.setOnClickListener {
+                clickListener.onClick(item.time.toString())
+            }
         }
 
         companion object {
@@ -56,5 +59,9 @@ class MoodListAdapter : RecyclerView.Adapter<MoodListAdapter.ViewHolder>() {
                 return ViewHolder(view)
             }
         }
+    }
+
+    class ItemClickListener(private val clickListener: (string:String) -> Unit) {
+        fun onClick(string:String) = clickListener(string)
     }
 }
