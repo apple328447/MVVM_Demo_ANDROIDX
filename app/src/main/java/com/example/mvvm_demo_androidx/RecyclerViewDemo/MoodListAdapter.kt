@@ -3,6 +3,7 @@ package com.example.mvvm_demo_androidx.RecyclerViewDemo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -30,7 +31,7 @@ class MoodListAdapter(private val clickListener: ItemClickListener) : RecyclerVi
     override fun getItemCount() = data?.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        
+
         /**
          * 方法一：
          */
@@ -52,6 +53,16 @@ class MoodListAdapter(private val clickListener: ItemClickListener) : RecyclerVi
             txv_title.setOnClickListener {
                 clickListener.onClick(item.time.toString())
             }
+
+            //2021/05/07新增旋轉動畫
+//            if (img_mood.isSelected) {
+                img_mood.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        itemView.context,
+                        R.anim.rotate_sport
+                    )
+                )
+//            }
         }
         /**
          * 方法二：
