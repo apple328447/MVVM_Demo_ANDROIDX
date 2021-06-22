@@ -67,4 +67,9 @@ dependencies {
     apply plugin: 'kotlin-android'
     apply plugin: 'kotlin-android-extensions'
 
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'//這要特別注意，2.5.0以下，版本太舊，用response<T> 會報錯誤
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+
 }
