@@ -3,9 +3,12 @@
     <translate
         android:fromXDelta="-100%"
         android:toXDelta="0"
-        android:duration="1000"/>
+        android:duration="100" />
+
+<!--    android:interpolator="@android:anim/accelerate_decelerate_interpolator"  插值器，用來修飾動畫顯示的效果，會影響動畫變化過程中的速度或行為。 可以套用到不同<tag>裡面-->
+
     <alpha
         android:fromAlpha="0.2"
         android:toAlpha="1.0"
-        android:duration="1000" />
+        android:duration="100" />
 </set>
