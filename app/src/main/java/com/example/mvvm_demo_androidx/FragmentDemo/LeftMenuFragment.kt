@@ -41,11 +41,14 @@ class LeftMenuFragment : Fragment() {
                     it.isSelected = 0 // 改成未讀
                 }
             }
-            selectedData.forEachIndexed { index, menuItemData ->
-                if (menuItemData.gameName == gameName) {
-                    selectedData.removeAt(index)
+
+            for (i in 0 until selectedData.size) {
+                if (selectedData[i].gameName == gameName) {
+                    selectedData.removeAt(i)
+                    break
                 }
             }
+
             refreshRv(mData)
             refreshRv2(selectedData)
         })
