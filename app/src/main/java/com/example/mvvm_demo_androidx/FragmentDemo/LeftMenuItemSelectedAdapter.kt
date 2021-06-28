@@ -3,6 +3,7 @@ package com.example.mvvm_demo_androidx.FragmentDemo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm_demo_androidx.R
 import com.example.mvvm_demo_androidx.RecyclerViewDemo.MoodListAdapter
@@ -34,6 +35,7 @@ class LeftMenuItemSelectedAdapter(private val clickListener: ItemClickListener) 
             when (item.isSelected) {
                 0 -> {
                     itemView.cl_content.visibility = View.GONE
+                    setVisibility(false)
                 }
                 1 -> {
                     itemView.cl_content.visibility = View.VISIBLE
@@ -43,8 +45,23 @@ class LeftMenuItemSelectedAdapter(private val clickListener: ItemClickListener) 
                     itemView.btn_select.setOnClickListener {
                         clickListener.onClick(item.gameName)
                     }
+                    setVisibility(true)
                 }
             }
+        }
+
+        private fun setVisibility(visible: Boolean) {
+            val param = itemView.layoutParams as RecyclerView.LayoutParams
+            if (visible) {
+                param.height = LinearLayout.LayoutParams.WRAP_CONTENT
+                param.width = LinearLayout.LayoutParams.MATCH_PARENT
+                itemView.visibility = View.VISIBLE
+            } else {
+                itemView.visibility = View.GONE
+                param.height = 0
+                param.width = 0
+            }
+            itemView.layoutParams = param
         }
     }
 
@@ -69,7 +86,11 @@ class LeftMenuItemSelectedAdapter(private val clickListener: ItemClickListener) 
     }
 
     override fun getItemCount(): Int {
-        return data.size + 1
+        return if(data.isNotEmpty()){
+            data.size + 1
+        }else{
+            data.size
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
