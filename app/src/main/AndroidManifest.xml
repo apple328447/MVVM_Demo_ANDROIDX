@@ -11,18 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FragmentDemo.FragmentDemoMainActivity">
+        <activity android:name=".SimplifyRV.SimplifyRecyclerViewMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Retrofit_Demo.RetrofitDemoActivity">
+        <activity android:name=".FragmentDemo.FragmentDemoMainActivity">
 
         </activity>
+        <activity android:name=".Retrofit_Demo.RetrofitDemoActivity"></activity>
         <activity android:name=".base.BaseToolBarActivity" />
-        <activity android:name=".RecyclerViewDemo.MoodListActivity"></activity>
+        <activity android:name=".RecyclerViewDemo.MoodListActivity" />
         <activity android:name=".LiveData.LiveDataActivity" />
         <activity android:name=".ObservableField_LiveData.ObservableField_LiveData_Activity" />
         <activity android:name=".ObservableField.ObservableFieldActivity" />

@@ -1,5 +1,6 @@
 package com.example.mvvm_demo_androidx.utils
 
+import com.example.mvvm_demo_androidx.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,4 +32,22 @@ class TimeUtils {
         var sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         return sdf.format(Date())
     }
+    /**
+     * return : 星期幾
+     */
+    fun setupDayOfWeek(todayMillis: Long?): Int {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = todayMillis ?:0
+
+        return when (calendar.get(Calendar.DAY_OF_WEEK)) {
+            Calendar.SUNDAY -> R.string.sunday
+            Calendar.MONDAY -> R.string.monday
+            Calendar.TUESDAY -> R.string.tuesday
+            Calendar.WEDNESDAY -> R.string.wednesday
+            Calendar.THURSDAY -> R.string.thursday
+            Calendar.FRIDAY -> R.string.friday
+            else -> R.string.sunday
+        }
+    }
+
 }
